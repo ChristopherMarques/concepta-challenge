@@ -1,5 +1,3 @@
-import { StyleSheet } from "react-native";
-
 const colors = {
   // backgrounds
   black100: "hsla(225, 14%, 12%, 1)",
@@ -9,8 +7,8 @@ const colors = {
   black500: "hsla(225, 14%, 20%, 1)",
   black600: "hsla(225, 14%, 22%, 1)",
   black700: "hsla(225, 14%, 24%, 1)",
-  black800: "hsla(225, 14%, 26%, 1)",
-  black900: "hsla(225, 14%, 28%, 1)",
+  black800: "hsla(225, 13%, 18%, 1)",
+  black900: "hsla(227, 15%, 12%, 1)",
 
   // text
   white100: "hsla(225, 14%, 100%, 1)",

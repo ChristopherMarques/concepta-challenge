@@ -1,40 +1,34 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
+import DropdownButton from "../DropdownButton/DropdownButton";
+import DropdownMenu from "../DropdownMenu/DropdownMenu";
+import styles from "./styles";
 
-import DropdownButton from "./DropdownButton";
-import DropdownMenu from "./DropdownMenu";
-
-const styles = StyleSheet.create({
-  container: {
-    position: "relative",
-  },
-});
-
-interface DropdownProps {
-  items: {
+type DropdownProps = {
+  menuItems: { label: string; onClick: () => void }[];
+  alignment?: "left" | "right";
+  renderItem?: (item: {
     label: string;
-    onPress: () => void;
-  }[];
-}
+    onClick: () => void;
+  }) => React.ReactNode;
+};
 
-const Dropdown: React.FC<DropdownProps> = ({ items }) => {
+const Dropdown = ({
+  menuItems,
+  alignment = "left",
+  renderItem,
+}: DropdownProps) => {
   const [isVisible, setIsVisible] = useState(false);
-
-  const handleButtonPress = () => {
-    setIsVisible((prevState) => !prevState);
-  };
-
-  const handleMenuClose = () => {
-    setIsVisible(false);
-  };
+  const toggleVisibility = () => setIsVisible(!isVisible);
 
   return (
     <View style={styles.container}>
-      <DropdownButton onPress={handleButtonPress} />
+      <DropdownButton onPress={toggleVisibility} />
       <DropdownMenu
         isVisible={isVisible}
-        onClose={handleMenuClose}
-        items={items}
+        alignment={alignment}
+        menuItems={menuItems}
+        renderItem={renderItem}
       />
     </View>
   );

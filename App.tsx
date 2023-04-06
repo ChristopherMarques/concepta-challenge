@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-import Dropdown from "./src/components/Dropdown";
 import colors from "./src/theme";
+import Dropdown from "./src/components/Dropdown/Dropdown";
 
 const App: React.FC = () => {
   const [optionSelected, setOptionSelected] = useState("Select an Option");
@@ -19,16 +19,16 @@ const App: React.FC = () => {
   };
 
   const menuItems = [
-    { label: "Rename", onPress: handleRename },
-    { label: "Delete", onPress: handleDelete },
-    { label: "Share", onPress: handleShare },
+    { label: "Rename", onClick: handleRename },
+    { label: "Delete", onClick: handleDelete },
+    { label: "Share", onClick: handleShare },
   ];
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Concepta Challenge</Text>
       <Text style={styles.text}>{optionSelected}</Text>
-      <Dropdown items={menuItems} />
+      <Dropdown menuItems={menuItems} alignment="right" />
     </View>
   );
 };
@@ -37,11 +37,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: colors.black900,
     alignItems: "center",
+    backgroundColor: colors.black900,
   },
   text: {
-    fontSize: 50,
+    color: colors.white100,
+    fontSize: 20,
     marginBottom: 15,
   },
 });
